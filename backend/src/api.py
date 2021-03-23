@@ -69,7 +69,7 @@ def update_drink(payload, id):
             drink.title = req_title
 
         if req_recipe:
-            drink.recipe = json.dumps(req['recipe'])
+            drink.recipe = req_recipe if type(req_recipe) == str else json.dumps(req_recipe)
 
         drink.update()
     except Exception:

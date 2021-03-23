@@ -1,13 +1,16 @@
+import os
 import json
 from flask import request, _request_ctx_stack
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
+from dotenv import load_dotenv
 
+load_dotenv()
 
-AUTH0_DOMAIN = 'hoss-stack.eu.auth0.com'
-ALGORITHMS = ['RS256']
-API_AUDIENCE = 'authorize'
+AUTH0_DOMAIN = os.environ.get("authentication-domain")
+ALGORITHMS = [os.environ.get("authentcation-algorithm")]
+API_AUDIENCE = os.environ.get("authentcation-api")
 
 ## AuthError Exception
 '''
